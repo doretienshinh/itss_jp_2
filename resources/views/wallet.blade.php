@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <style>
         .card {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -12,6 +9,7 @@
           text-align: center;
           font-family: arial;
           border: 1px solid black;
+          background-color:powderblue;
         }
         tr {
             text-align: left;
