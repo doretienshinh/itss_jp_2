@@ -20,5 +20,9 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    // Để nhìn popup wallet report
+    // Route::get('/wallet-popup', function () {
+    //     return view('wallet');
+    // });
 });
 
