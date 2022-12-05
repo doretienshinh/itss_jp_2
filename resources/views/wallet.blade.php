@@ -12,6 +12,7 @@
           text-align: center;
           font-family: arial;
           border: 1px solid black;
+          background-color: powderblue;
         }
         tr {
             text-align: left;
