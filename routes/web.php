@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,8 @@ Route::group( ['middleware' => 'auth' ], function()
 
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
-    Route::get('/getshuu', [App\Http\Controllers\ProfileController::class, 'index'])->name('getshuu');
+    Route::get('/monthly-income', [App\Http\Controllers\MonthlyIncomeController::class, 'index'])->name('monthly-income');
+    Route::get('/daily-expense', [App\Http\Controllers\DailyExpenseController::class, 'index'])->name('daily-expense');
     // Để nhìn popup wallet report
     // Route::get('/wallet-popup', function () {
     //     return view('wallet');

@@ -2,26 +2,9 @@
 
 @section('content')
     
-<!DOCTYPE html>
-<html>
+
 <head>
     <style>
-        .chart {
-            position: relative;
-            left: 45%;
-            bottom: 23%;
-            margin-bottom: 10px;
-        }
-
-        .textt{
-            position: relative;
-            left:10%;
-            top:20%;
-        }
-
-        .chart1 {
-            margin: 0 auto;
-        }
 
         .dot {
             height: 10px;
@@ -41,22 +24,32 @@
     </style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<body>
-<div class="right">
-    <div class="textt">
-        8月<br>
-        必要: 2000$<br>
-        自身: 2000$<br>
-        貯金: 2000$<br>
+<div class="container">
+  <div class="row mt-3 mb-3">
+      <div class="col-3 pt-3">
+          8月<br>
+          必要: 2000$<br>
+          自身: 2000$<br>
+          貯金: 2000$<br>
+      </div>
+      <div class="col-9">
+        <div class="card">
+          <canvas id="myChart" class="chart "></canvas>
+        </div>
+      </div>
+  </div>
+
+  <div class="row mb-3" style="margin-left:0; margin-right:0;">  
+    <div class="card">
+      <div style="text-align:center">
+          <span class="dot"></span> <span style="margin-right: 12px">支出</span>  
+          <span class="dot1"></span> 月収  
+      </div>
+      <canvas id="myChart1" class="chart1" style="width:100%;max-width:600px"></canvas>
     </div>
-    <canvas id="myChart" class="chart" style="width:70%;max-width:600px"></canvas>
+  </div>
 
 </div>
-<div style="text-align:center">
-    <span class="dot"></span> <span style="margin-right: 12px">支出</span>  
-    <span class="dot1"></span> 月収  
-</div>
-<canvas id="myChart1" class="chart1" style="width:100%;max-width:600px"></canvas>
 
 <script>
 var xValues = ["貯金", "自身", "必要"];
@@ -99,8 +92,5 @@ new Chart("myChart1", {
   }
 });
 </script>
-
-</body>
-</html>
 
 @endsection
