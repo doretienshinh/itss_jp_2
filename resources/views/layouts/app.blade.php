@@ -79,8 +79,10 @@
                         <div class="row g-0">
                     
                             <div class="col-md-4 gradient-custom text-center" style="border-bottom: 1px solid lightgrey">
-                                <img src="https://cdn-icons-png.flaticon.com/512/4128/4128176.png"
+                                <a href="{{ route('profile') }}">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/4128/4128176.png"
                                     alt="Avatar" class="img-fluid my-4" style="width: 100px; height: 100px" />
+                                </a>
                                 <h5 style="color: black">User's name</h5>
                             </div>
 
@@ -107,13 +109,13 @@
                         @yield('content')
                         <ul class="nav nav-pills nav-fill" style="border: solid 0.5px lightgrey; border-radius: 7px;">
                             <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">支出管理</a>
+                                <a class="nav-link {{ (request()->is('home') || request()->is('daily-expense') ) ? 'active' : '' }}" aria-current="page" href="{{ route('daily-expense') }}">支出管理</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#">レポート</a>
+                                <a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }}" href="{{ route('monthly-income') }}">レポート</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#">設定</a>
+                                <a class="nav-link {{ (request()->is('profile') ) ? 'active' : '' }}" href="{{ route('profile') }}">設定</a>
                             </li>
                         </ul>
                     </div>

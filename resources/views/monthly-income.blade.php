@@ -45,7 +45,7 @@
           <span class="dot"></span> <span style="margin-right: 12px">支出</span>  
           <span class="dot1"></span> 月収  
       </div>
-      <canvas id="myChart1" class="chart1" style="width:100%;max-width:600px"></canvas>
+      <canvas id="myChart1" class="chart1" style="width:100%;"></canvas>
     </div>
   </div>
 
