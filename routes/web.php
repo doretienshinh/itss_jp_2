@@ -24,6 +24,8 @@ Route::group( ['middleware' => 'auth' ], function()
 
     Route::get('/monthly-income', [App\Http\Controllers\MonthlyIncomeController::class, 'index'])->name('monthly-income');
     Route::get('/daily-expense', [App\Http\Controllers\DailyExpenseController::class, 'index'])->name('daily-expense');
+    Route::get('/wallet-setting', [App\Http\Controllers\WalletSettingController::class, 'index'])->name('wallet-setting');
+    Route::get('/add-wallet', [App\Http\Controllers\AddWalletController::class, 'index'])->name('add-wallet');
     // Để nhìn popup wallet report
     // Route::get('/wallet-popup', function () {
     //     return view('wallet');

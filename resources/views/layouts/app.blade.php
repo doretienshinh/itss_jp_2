@@ -120,8 +120,8 @@
 									href="{{ route('monthly-income') }}">レポート</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('profile') ) ? 'active' : '' }}"
-									href="{{ route('profile') }}">設定</a>
+								<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }}"
+									href="{{ route('wallet-setting') }}">設定</a>
 							</li>
 						</ul>
 					</div>
