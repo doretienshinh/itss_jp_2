@@ -30,5 +30,6 @@ Route::group( ['middleware' => 'auth' ], function()
     // Route::get('/wallet-popup', function () {
     //     return view('wallet');
     // });
+    Route::get('/home-page', [App\Http\Controllers\HomePageController::class, 'index'])->name('home-page');
 });
 
