@@ -13,9 +13,17 @@
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<!-- Scripts -->
 	@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 </head>
 
 <body>
@@ -94,16 +102,16 @@
 									<table class="table table-borderless" style="width:50%">
 										<tr>
 											<td><strong>ウォレット</strong></td>
-											<td>ABC</td>
+											<td>{{ $walletUsing->name }}</td>
 										</tr>
 										<tr>
-											<td><strong>総収入</strong></td>
-											<td>$$$</td>
+											<td><strong>Amount</strong></td>
+											<td>{{ $walletUsing->amount }}</td>
 										</tr>
-										<tr>
+										{{-- <tr>
 											<td><strong>総支出</strong></td>
 											<td>$$$</td>
-										</tr>
+										</tr> --}}
 									</table>
 								</div>
 							</div>
@@ -112,8 +120,8 @@
 						@yield('content')
 						<ul class="nav nav-pills nav-fill" style="border: solid 0.5px lightgrey; border-radius: 7px;">
 							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('home') || request()->is('daily-expense') ) ? 'active' : '' }}"
-									aria-current="page" href="{{ route('daily-expense') }}">支出管理</a>
+								<a class="nav-link {{ (request()->is('home') || request()->is('home-page') ) ? 'active' : '' }}"
+									aria-current="page" href="{{ route('home-page') }}">支出管理</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }}"
@@ -130,5 +138,7 @@
 		</main>
 	</div>
 </body>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>

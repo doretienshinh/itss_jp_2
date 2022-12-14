@@ -3,26 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Wallet;
+use App\Http\Services\WalletService;
+use App\Http\Services\SpendingTypeService;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    protected $WalletService, $SpendingTypeService;
+
+    public function __construct(WalletService $WalletService, SpendingTypeService $SpendingTypeService){
+        $this->WalletService = $WalletService;
+        $this->SpendingTypeService = $SpendingTypeService;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        if (Auth::user()->wallets->isEmpty()) {
+            Wallet::create([
+                'name' => 'シングルウォレット',
+                'owner' => Auth::user()->id,
+                'using' => 'true'
+            ]);
+        };
+
+        $wallet = $this->WalletService->getUsingWallet();
+        $SpendingTypes = $this->SpendingTypeService->getAll();
+        // dd($SpendingTypes);
+        return view('home-page', [
+            'wallet' => $wallet,
+            'SpendingTypes' => $SpendingTypes
+        ]);
     }
 }
