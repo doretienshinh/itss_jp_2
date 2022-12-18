@@ -23,6 +23,9 @@
 			margin: 0;
 			padding: 0;
 		}
+		input:focus {
+  			outline: none;
+		}
 	</style>
 </head>
 
@@ -106,7 +109,7 @@
 										</tr>
 										<tr>
 											<td><strong>Amount</strong></td>
-											<td>{{ $walletUsing->amount }}</td>
+											<td>{{ $walletUsing->spendings->sum('amount') }}$</td>
 										</tr>
 										{{-- <tr>
 											<td><strong>総支出</strong></td>
@@ -120,7 +123,7 @@
 						@yield('content')
 						<ul class="nav nav-pills nav-fill" style="border: solid 0.5px lightgrey; border-radius: 7px;">
 							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('home') || request()->is('home-page') ) ? 'active' : '' }}"
+								<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}"
 									aria-current="page" href="{{ route('home-page') }}">支出管理</a>
 							</li>
 							<li class="nav-item">

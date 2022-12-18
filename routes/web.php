@@ -26,6 +26,8 @@ Route::group( ['middleware' => 'auth' ], function()
     // Route::get('/daily-expense', [App\Http\Controllers\DailyExpenseController::class, 'index'])->name('daily-expense');
     Route::post('/daily-expense', [App\Http\Controllers\DailyExpenseController::class, 'store'])->name('daily-expense.store');
     Route::get('/wallet-setting', [App\Http\Controllers\WalletSettingController::class, 'index'])->name('wallet-setting');
+    Route::post('/wallet-setting', [App\Http\Controllers\WalletSettingController::class, 'store'])->name('wallet.store');
+    Route::post('/wallet-active', [App\Http\Controllers\WalletSettingController::class, 'activeWallet'])->name('wallet.active');
     Route::get('/add-wallet', [App\Http\Controllers\AddWalletController::class, 'index'])->name('add-wallet');
     // Để nhìn popup wallet report
     // Route::get('/wallet-popup', function () {

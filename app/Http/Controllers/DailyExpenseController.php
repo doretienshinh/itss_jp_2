@@ -16,7 +16,7 @@ class DailyExpenseController extends Controller
     public function store(Request $request)
     {
         $result = $this->SpendingService->store($request);
-
+        
         return redirect()->back();
     }
 }
