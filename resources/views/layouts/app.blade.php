@@ -26,6 +26,9 @@
 		input:focus {
   			outline: none;
 		}
+		.table td {
+			border-top: 0;
+		}
 	</style>
 </head>
 
@@ -87,14 +90,14 @@
 		</nav>
 
 		<main class="py-4">
-			<div class="row justify-content-center align-items-center h-100">
+			<div class="d-flex justify-content-center align-items-center h-100">
 				<div class="col col-lg-6 mb-4 mb-lg-0">
 					<div class="card mb-3" style="border-radius: .5rem;">
 						<div class="row g-0">
 
 							<div class="col-md-4 gradient-custom text-center" style="border-bottom: 1px solid lightgrey">
 								<a href="{{ route('profile') }}">
-									<img src="{{ "/storage/avatar/" . (auth()->user()->avatar ? auth()->user()->avatar : "https://cdn-icons-png.flaticon.com/512/4128/4128176.png") }}" alt="Avatar" class="img-fluid my-4"
+									<img src="{{ (auth()->user()->avatar ? "/storage/avatar/" . auth()->user()->avatar : "https://cdn-icons-png.flaticon.com/512/4128/4128176.png") }}" alt="Avatar" class="img-fluid my-4"
 										style="width: 100px; height: 100px" />
 									<h5 style="color: black">{{ auth()->user()->name }}</h5>
 								</a>

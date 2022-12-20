@@ -50,6 +50,10 @@
     </div>
 
     <script>
+        var amountInDays = @json($amountInDays);
+        var spendingInDays = @json($spendingInDays);
+console.log(amountInDays);
+console.log(spendingInDays);
         var xValues = ["必要", "自身", "貯金"];
         var yValues = [{{ $spendingOfMonthlyType1->sum('amount') }}, {{ $spendingOfMonthlyType2->sum('amount') }},
             {{ $spendingOfMonthlyType3->sum('amount') }}
@@ -70,21 +74,24 @@
                 }]
             }
         });
-
-        var xValues1 = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-
+        var xValues1 = [];
+        var days = {{ $days }};
+        for(let i = 0; i < days ; i++){
+            xValues1.push(i + 1);
+        }
+        console.log(xValues1);
         new Chart("myChart1", {
             type: "line",
             data: {
                 labels: xValues1,
                 datasets: [{
                     type: 'bar',
-                    data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+                    data: amountInDays,
                     borderColor: "red",
                     fill: false
                 }, {
                     type: 'line',
-                    data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+                    data: spendingInDays,
                     borderColor: "blue",
                     fill: false
                 }]
