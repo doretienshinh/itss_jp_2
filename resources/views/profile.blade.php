@@ -23,7 +23,7 @@
 
 		<div class="row mb-3">
 			<div class="col-md-6 offset-md-3">
-				<label>以前のパスワード:</label>
+				<label>新しいパスワード:</label>
 				<input type="password" class="form-control-lg col-12 @error('password') is-invalid @enderror" name="password"
 					autocomplete="current-password">
 				@error('password')
@@ -36,7 +36,7 @@
 
 		<div class="row mb-3">
 			<div class="col-md-6 offset-md-3">
-				<label>新しいパスワード:</label>
+				<label>新しいパスワード確認:</label>
 				<input type="password" class="form-control-lg col-12 @error('password_confirmation') is-invalid @enderror"
 					name="password_confirmation">
 				@error('password_confirmation')
