@@ -15,6 +15,6 @@ class SpendingType extends Model
 
     public function spendings()
     {
-        return $this->hasMany(Spending::class,'type_id', 'id');
+        return $this->hasMany(Spending::class, 'id', 'type_id');
     }
 }

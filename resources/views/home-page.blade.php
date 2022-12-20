@@ -5,7 +5,15 @@
 
 <head>
     <style>
-        .test {
+        .plus {
+            background-color: #51d140;
+            margin-right: 5px;
+            margin-left: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border: 1px solid black;
+        }
+        .minus {
             background-color: #F4CCCC;
             margin-right: 5px;
             margin-left: 5px;
@@ -13,13 +21,7 @@
             margin-bottom: 15px;
             border: 1px solid black;
         }
-        
         .pay {
-            background-color: #FCE5CD;
-            border: 1px solid black;
-            width: 85px;
-            height:50px;
-            position: relative;
             left: 85%;
             bottom: 50px;
             display:flex;
@@ -33,18 +35,18 @@
     </style>
 </head>
 <div class="container" style="height: 395px; overflow:auto">
-    @foreach ($wallet->spendings as $spending)
-    <div class="test">
+    @foreach ($spendings as $spending)
+    <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }}">
         <div style="display: flex">
             <div style="margin-right: 200px"> 日付:  {{ $spending->created_at }} </div> 
             <div> 支出: {{ $spending->amount }}$ </div>
         </div>
         ウォレット:  {{$wallet->name}} <br>
         ノート:  {{ $spending->note }} <br>
-        タイプ:  {{ $spending->type_id }} <br>
+        タイプ:  {{ $spending->spendingType->name }} <br>
     </div>
     @endforeach
-    <button type="button" class="pay" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-success pay" data-toggle="modal" data-target="#exampleModal">
         支出追加
     </button>
       

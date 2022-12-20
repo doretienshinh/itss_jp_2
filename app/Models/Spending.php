@@ -23,6 +23,6 @@ class Spending extends Model
 
     public function spendingType()
     {
-        return $this->belongsTo(SpendingType::class, 'id', 'type_id');
+        return $this->belongsTo(SpendingType::class, 'type_id', 'id');
     }
 }
