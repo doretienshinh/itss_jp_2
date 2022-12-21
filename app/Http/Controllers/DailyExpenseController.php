@@ -19,4 +19,21 @@ class DailyExpenseController extends Controller
         
         return redirect()->back();
     }
+    
+    public function update(Request $request, $id)
+    {
+        $this->SpendingService->update($request, $id);
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $this->SpendingService->destroy($id);
+        return redirect()->back();
+    }
+
+    public function find(Request $request)
+    {
+        return $this->SpendingService->find($request->id);
+    }
 }
