@@ -112,7 +112,7 @@
 										</tr>
 										<tr>
 											<td><strong>Amount</strong></td>
-											<td>{{ $walletUsing->spendings->sum('amount') }}$</td>
+											<td>{{ $walletUsing->amount }}$</td>
 										</tr>
 										{{-- <tr>
 											<td><strong>総支出</strong></td>
