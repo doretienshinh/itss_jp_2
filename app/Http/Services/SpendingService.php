@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class SpendingService
 {
+    public function find($id){
+        return Spending::where('id', $id)->firstOrFail();
+    }
+
     public function store($request){
         $amount = Wallet::where('id', $request->wallet_id)->first()->amount;
         
@@ -22,6 +26,37 @@ class SpendingService
             return false;
         }
         return true;
+    }
+
+    public function update($request, $id){
+        $oldSpendingAmount = Spending::where('id', $id)->first()->amount;
+        $amount = Wallet::where('owner', Auth::user()->id)->where('using', 'true')->first()->amount;
+        Wallet::where('owner', Auth::user()->id)->where('using', 'true')->update([
+            'amount' => $amount - $oldSpendingAmount + $request->amount,
+        ]);
+        try {
+            Spending::where('id', $id)->update([
+                'amount' => $request->amount,
+                'note' => $request->note,
+                'type_id' => $request->type_id
+            ]);
+        } catch (\Exception $err){
+            return false;
+        }
+        return true;
+    }
+
+    public function destroy($id){
+        $spending = Spending::where('id', $id)->first();
+        if($spending){
+            $amount = Wallet::where('owner', Auth::user()->id)->where('using', 'true')->first()->amount;
+            
+            Wallet::where('owner', Auth::user()->id)->where('using', 'true')->update([
+                'amount' => $amount - $spending->amount,
+            ]);
+            return Spending::where('id', $id)->delete();
+        }
+        else return false;
     }
 
     public function getAllByWallet($wallet_id){
