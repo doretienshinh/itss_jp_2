@@ -5,21 +5,21 @@
 
 <head>
     <style>
-        .plus {
-            background-color: #51d140;
+        .spending-item {
+            padding: .5em;
             margin-right: 5px;
             margin-left: 5px;
             margin-top: 15px;
             margin-bottom: 15px;
             border: 1px solid black;
+            border-radius: .6em;
+        }
+
+        .plus {
+            background-color: #51d140;
         }
         .minus {
             background-color: #F4CCCC;
-            margin-right: 5px;
-            margin-left: 5px;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            border: 1px solid black;
         }
         .pay {
             left: 85%;
@@ -34,9 +34,9 @@
         }
     </style>
 </head>
-<div class="container" style="height: 395px; overflow:auto">
+<div class="container" style="height: 100%; overflow:auto">
     @foreach ($spendings as $spending)
-    <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }} spending-item" data-id="{{$spending->id}}" data-toggle="modal" data-target="#exampleModal{{$spending->id}}">
+    <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }} spending-item" data-id="{{$spending->id}}" data-toggle="modal" data-target="#exampleModal{{$spending->id}}" style="cursor: pointer">
         <div style="display: flex">
             <div style="margin-right: 200px"> 日付:  {{ $spending->created_at }} </div> 
             <div> 支出: {{ $spending->amount }}$ </div>
@@ -67,7 +67,7 @@
                       <div class="row mt-2">
                           <div class="col-12">
                               <label for="type">タイプ:</label>
-                              <select id="type" name="type_id">
+                              <select id="type" name="type_id" style="border-radius: .2em;">
                                 @foreach ($SpendingTypes as $SpendingType)
                                 <option value="{{ $SpendingType->id }}">{{ $SpendingType->name }}</option>
                                 @endforeach

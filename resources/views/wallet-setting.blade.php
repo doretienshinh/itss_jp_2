@@ -6,10 +6,10 @@
             @csrf
             <table class="table table-borderless" style="width: 60%; margin-top: 30px">
                 <tr>
-                    <td style="text-align: center; border: 1px solid black;">ウォレット分け</td>
+                    <td style="text-align: center">ウォレット分け</td>
                     <td style="padding-left: 5px"></td>
                     <td style="padding: 0px; width: 50%;">
-                        <select style="width: 170px; text-align: center; height: 40px; display: block; margin: auto;" name="wallet_id">
+                        <select style="width: 170px; text-align: center; height: 40px; display: block; margin: auto; border-radius: .5em;" name="wallet_id">
                             @foreach ($wallets as $wallet)
                                 <option value="{{ $wallet->id }}" {{ $wallet->id == $walletUsing->id ? ' selected' : '' }}>
                                     {{ $wallet->name }}</option>
@@ -25,10 +25,10 @@
                 </tr>
     
                 <tr>
-                    <td style="text-align: center; border: 1px solid black;">通知</td>
+                    <td style="text-align: center">通知</td>
                     <td style="padding-left: 5px"></td>
                     <td style="padding: 0px;">
-                        <select style="width: 170px; text-align: center; height: 40px; display: block; margin: auto;">
+                        <select style="width: 170px; text-align: center; height: 40px; display: block; margin: auto; border-radius: .5em;">
                             <option value="0">毎日</option>
                             <option value="1">毎月</option>
                             <option value="2">オフ</option>
