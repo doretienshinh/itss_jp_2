@@ -9,7 +9,7 @@ Then open the .env file and change the address to connect to your database
 ```bash
 $ php artisan config:cache
 $ php artisan migrate
-php artisan db:seed
+$ php artisan db:seed
 $ php artisan storage:link
 $ npm install
 $ npm run build
