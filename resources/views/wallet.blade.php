@@ -33,9 +33,9 @@
         <hr>
         <table>
             <tr>
-                <td>ウォレット:</td>
+                <td>Ví:</td>
                 <td>ABC</td>
-                <td>口座残高:</td>
+                <td>Tiền trong ví:</td>
                 <td>$$$</td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
             </tr>
         </table>
         <hr>
-        <p>ノート:</p>
+        <p>Ghi chú:</p>
         <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
     </div>
 

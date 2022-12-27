@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
     {
         $types = [
             [
-                'name' => '必要',
+                'name' => 'Cần thiết',
             ],
             [
-                'name' => '自身',
+                'name' => 'Cá nhân',
             ],
             [
-                'name' => '貯金',
+                'name' => 'Tiết kiệm',
             ],
         ];
 

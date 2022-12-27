@@ -23,7 +23,7 @@ class HomeController extends Controller
     {
         if (Auth::user()->wallets->isEmpty()) {
             Wallet::create([
-                'name' => 'シングルウォレット',
+                'name' => 'Ví đơn',
                 'owner' => Auth::user()->id,
                 'using' => 'true'
             ]);
