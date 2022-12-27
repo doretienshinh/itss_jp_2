@@ -29,6 +29,20 @@
 		.table td {
 			border-top: 0;
 		}
+
+		#app {
+			height: 100vh;
+			display: flex;
+			flex-flow: column;
+		}
+
+		#app > nav {
+			flex: 0 1 auto;
+		}
+
+		#app > main {
+			flex: 1 1 auto;
+		}
 	</style>
 </head>
 
@@ -91,9 +105,9 @@
 
 		<main class="py-4">
 			<div class="d-flex justify-content-center align-items-center h-100">
-				<div class="col col-lg-6 mb-4 mb-lg-0">
-					<div class="card mb-3" style="border-radius: .5rem;">
-						<div class="row g-0">
+				<div class="col col-lg-6 mb-4 mb-lg-0 h-100">
+					<div class="card mb-3 h-100" style="border-radius: .5rem;">
+						<div class="row g-0 flex-grow-0 flex-shrink-1">
 
 							<div class="col-md-4 gradient-custom text-center" style="border-bottom: 1px solid lightgrey">
 								<a href="{{ route('profile') }}">
@@ -123,8 +137,11 @@
 							</div>
 						</div>
 
+						<div class="flex-grow-1 flex-shrink-1" style="height: 58vh; overflow-y: auto; overflow-x: hidden">
 						@yield('content')
-						<ul class="nav nav-pills nav-fill" style="border: solid 0.5px lightgrey; border-radius: 7px;">
+						</div>
+
+						<ul class="nav nav-pills nav-fill flex-grow-0 flex-shrink-1" style="border: solid 0.5px lightgrey; border-radius: 7px;">
 							<li class="nav-item">
 								<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}"
 									aria-current="page" href="{{ route('home-page') }}">支出管理</a>

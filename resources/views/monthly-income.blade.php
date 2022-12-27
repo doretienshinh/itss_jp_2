@@ -41,7 +41,7 @@
             <div class="card">
                 <div style="text-align:center">
                     <span class="dot"></span> <span style="margin-right: 12px">支出</span>
-                    <span class="dot1"></span> 月収
+                    <span class="dot1"></span> 合計
                 </div>
                 <canvas id="myChart1" class="chart1" style="width:100%;"></canvas>
             </div>
@@ -52,6 +52,7 @@
     <script>
         var amountInDays = @json($amountInDays);
         var spendingInDays = @json($spendingInDays);
+        spendingInDays = spendingInDays.map(s => s >= 0 ? 0 : -s);
 console.log(amountInDays);
 console.log(spendingInDays);
         var xValues = ["必要", "自身", "貯金"];
@@ -85,14 +86,15 @@ console.log(spendingInDays);
             data: {
                 labels: xValues1,
                 datasets: [{
-                    type: 'bar',
+                    type: 'line',
                     data: amountInDays,
                     borderColor: "red",
                     fill: false
                 }, {
-                    type: 'line',
+                    type: 'bar',
                     data: spendingInDays,
                     borderColor: "blue",
+                    backgroundColor: "blue",
                     fill: false
                 }]
             },
