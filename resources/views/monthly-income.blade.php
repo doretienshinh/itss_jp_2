@@ -25,10 +25,10 @@
     <div class="container">
         <div class="row mt-3 mb-3">
             <div class="col-3 pt-3">
-                {{ \Carbon\Carbon::now()->month }} 月<br>
-                必要: {{ $spendingOfMonthlyType1->sum('amount') }}$<br>
-                自身: {{ $spendingOfMonthlyType2->sum('amount') }}$<br>
-                貯金: {{ $spendingOfMonthlyType3->sum('amount') }}$<br>
+                Tháng {{ \Carbon\Carbon::now()->month }}<br>
+                Cần thiết: {{ $spendingOfMonthlyType1->sum('amount') }}đ<br>
+                Cá nhân: {{ $spendingOfMonthlyType2->sum('amount') }}đ<br>
+                Tiết kiệm: {{ $spendingOfMonthlyType3->sum('amount') }}đ<br>
             </div>
             <div class="col-9">
                 <div class="card">
@@ -40,8 +40,8 @@
         <div class="row mb-3" style="margin-left:0; margin-right:0;">
             <div class="card">
                 <div style="text-align:center">
-                    <span class="dot"></span> <span style="margin-right: 12px">支出</span>
-                    <span class="dot1"></span> 合計
+                    <span class="dot"></span> <span style="margin-right: 12px">Chi tiêu</span>
+                    <span class="dot1"></span> Toàn bộ
                 </div>
                 <canvas id="myChart1" class="chart1" style="width:100%;"></canvas>
             </div>
@@ -55,7 +55,7 @@
         spendingInDays = spendingInDays.map(s => s >= 0 ? 0 : -s);
 console.log(amountInDays);
 console.log(spendingInDays);
-        var xValues = ["必要", "自身", "貯金"];
+        var xValues = ["Cần thiết", "Cá nhân", "Tiết kiệm"];
         var yValues = [{{ $spendingOfMonthlyType1->sum('amount') }}, {{ $spendingOfMonthlyType2->sum('amount') }},
             {{ $spendingOfMonthlyType3->sum('amount') }}
         ];

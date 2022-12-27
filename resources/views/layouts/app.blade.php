@@ -70,13 +70,13 @@
 						@guest
 						@if (Route::has('login'))
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('login') }}">{{ __('サインイン') }}</a>
+							<a class="nav-link" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
 						</li>
 						@endif
 
 						@if (Route::has('register'))
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('register') }}">{{ __('サインアップ') }}</a>
+							<a class="nav-link" href="{{ route('register') }}">{{ __('Đăng ký') }}</a>
 						</li>
 						@endif
 						@else
@@ -89,7 +89,7 @@
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-									{{ __('サインアウト') }}
+									{{ __('Đăng xuất') }}
 								</a>
 
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -121,11 +121,11 @@
 								<div class="card-body p-4">
 									<table class="table table-borderless" style="width:50%">
 										<tr>
-											<td><strong>ウォレット</strong></td>
+											<td><strong>Ví</strong></td>
 											<td>{{ $walletUsing->name }}</td>
 										</tr>
 										<tr>
-											<td><strong>Amount</strong></td>
+											<td><strong>Tiền trong ví</strong></td>
 											<td>{{ $walletUsing->amount }}$</td>
 										</tr>
 										{{-- <tr>
@@ -144,15 +144,15 @@
 						<ul class="nav nav-pills nav-fill flex-grow-0 flex-shrink-1" style="border: solid 0.5px lightgrey; border-radius: 7px;">
 							<li class="nav-item">
 								<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}"
-									aria-current="page" href="{{ route('home-page') }}">支出管理</a>
+									aria-current="page" href="{{ route('home-page') }}">Thu chi</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }}"
-									href="{{ route('monthly-income') }}">レポート</a>
+									href="{{ route('monthly-income') }}">Báo cáo</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }}"
-									href="{{ route('wallet-setting') }}">設定</a>
+									href="{{ route('wallet-setting') }}">Thiết lập</a>
 							</li>
 						</ul>
 					</div>

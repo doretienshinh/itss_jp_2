@@ -10,7 +10,7 @@
 				<div class="row mb-3">
 					<div class="col-md-6 offset-md-3">
 						<input id="email" type="email" class="form-control-lg col-12 @error('email') is-invalid @enderror"
-							name="email" placeholder="メール:" value="{{ old('email') }}" required autocomplete="email" autofocus>
+							name="email" placeholder="Email:" value="{{ old('email') }}" required autocomplete="email" autofocus>
 						@error('email')
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
 
 				<div class="row mb-3">
 					<div class="col-md-6 offset-md-3">
-						<input id="password" type="password" placeholder="パスワード:"
+						<input id="password" type="password" placeholder="Mật khẩu:"
 							class="form-control-lg col-12 @error('password') is-invalid @enderror" name="password" required
 							autocomplete="current-password">
 
@@ -46,18 +46,18 @@
 				<div class="row mb-3">
 					<div class="col-6 offset-md-3">
 						<button type="submit" class="btn btn-primary btn-lg col-12">
-							{{ __('ログイン') }}
+							{{ __('Đăng nhập') }}
 						</button>
 					</div>
 				</div>
 
 				<div class="row mb-3">
 					<div class="col-md-5 offset-md-2 text-success text-end h5">
-						{{ __('アカウントを持っていませんか？') }}
+						{{ __('Chưa có tài khoản？') }}
 					</div>
 					<div class="col-md-3 h5">
 						@if (Route::has('register'))
-						<a class="nav-link text-start text-primary" href="{{ route('register') }}">{{ __('サインアップ') }}</a>
+						<a class="nav-link text-start text-primary" href="{{ route('register') }}">{{ __('Tạo tài khoản') }}</a>
 						@endif
 					</div>
 				</div>

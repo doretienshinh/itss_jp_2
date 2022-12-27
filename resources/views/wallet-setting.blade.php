@@ -6,7 +6,7 @@
             @csrf
             <table class="table table-borderless" style="width: 60%; margin-top: 30px">
                 <tr>
-                    <td style="text-align: center">ウォレット分け</td>
+                    <td style="text-align: center">Chia ví</td>
                     <td style="padding-left: 5px"></td>
                     <td style="padding: 0px; width: 50%;">
                         <select style="width: 170px; text-align: center; height: 40px; display: block; margin: auto; border-radius: .5em;" name="wallet_id">
@@ -25,13 +25,13 @@
                 </tr>
     
                 <tr>
-                    <td style="text-align: center">通知</td>
+                    <td style="text-align: center">Thông báo</td>
                     <td style="padding-left: 5px"></td>
                     <td style="padding: 0px;">
                         <select style="width: 170px; text-align: center; height: 40px; display: block; margin: auto; border-radius: .5em;">
-                            <option value="0">毎日</option>
-                            <option value="1">毎月</option>
-                            <option value="2">オフ</option>
+                            <option value="0">Hàng ngày</option>
+                            <option value="1">Hàng tuần</option>
+                            <option value="2">Tắt</option>
                         </select>
                     </td>
                 </tr>
@@ -41,11 +41,11 @@
                 <tr>
                     <td style="width: 50%">
                         <button type="button" class="btn btn-warning" style="display: block; margin: auto;" data-toggle="modal"
-                            data-target="#exampleModal">ウォレットを追加</button>
+                            data-target="#exampleModal">Thêm ví</button>
                     </td>
                     <td style="padding-left: 5px"></td>
                     <td style="width: 50%">
-                        <button type="submit" class="btn btn-success" style="display: block; margin: auto;">保存</button>
+                        <button type="submit" class="btn btn-success" style="display: block; margin: auto;">Lưu</button>
                     </td>
                 </tr>
             </table>
@@ -56,7 +56,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ウォレットを追加</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm Ví</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -64,12 +64,12 @@
                 <form method="post" action="{{ route('wallet.store') }}">
                     @csrf
                     <div class="modal-body">
-                        <input type="text" placeholder="ウォレット名" name="name"
+                        <input type="text" placeholder="Tên ví" name="name"
                             style="width: 100%; border: 0; border-bottom: 1px solid black;">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">追加</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Thêm ví</button>
                     </div>
                 </form>
             </div>
