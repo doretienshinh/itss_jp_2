@@ -38,16 +38,16 @@
     @foreach ($spendings as $spending)
     <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }} spending-item" data-id="{{$spending->id}}" data-toggle="modal" data-target="#exampleModal{{$spending->id}}" style="cursor: pointer">
         <div style="display: flex">
-            <div style="margin-right: 200px"> 日付:  {{ $spending->created_at }} </div> 
-            <div> 支出: {{ $spending->amount }}$ </div>
+            <div style="margin-right: 200px"> Ngày:  {{ $spending->created_at }} </div> 
+            <div> Số tiền: {{ $spending->amount }}đ </div>
         </div>
-        ウォレット:  {{$wallet->name}} <br>
-        ノート:  {{ $spending->note }} <br>
-        タイプ:  {{ $spending->spendingType->name }} <br>
+        Ví:  {{$wallet->name}} <br>
+        Ghi chú:  {{ $spending->note }} <br>
+        Loại:  {{ $spending->spendingType->name }} <br>
     </div>
     @endforeach
     <button type="button" class="btn btn-success pay" data-toggle="modal" data-target="#exampleModal">
-        支出追加
+    Thêm </br> chi tiêu
     </button>
       
       <!-- Modal -->
@@ -60,13 +60,13 @@
               <div class="mx-auto p-2">
                   <div class="row mb-2">
                       <div class="row" style="white-space: nowrap;">
-                          <div class="col-6">ウォレット: <span>{{ $wallet->name }}</span></div>
+                          <div class="col-6">Ví: <span>{{ $wallet->name }}</span></div>
                           <input type="hidden" name="wallet_id" value={{ $wallet->id }}>
-                          <div class="col-6 d-flex">支出: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;"></div>
+                          <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;"></div>
                       </div>
                       <div class="row mt-2">
                           <div class="col-12">
-                              <label for="type">タイプ:</label>
+                              <label for="type">Loại:</label>
                               <select id="type" name="type_id" style="border-radius: .2em;">
                                 @foreach ($SpendingTypes as $SpendingType)
                                 <option value="{{ $SpendingType->id }}">{{ $SpendingType->name }}</option>
@@ -77,7 +77,7 @@
                   </div>
                   <div class="row mb-3" style="padding-top: 10px; border-top: 1px solid gray; ">
                       <div class="">
-                          <label>ノート:</label>
+                          <label>Ghi chú:</label>
                           <textarea id="note" name="note" style="margin-top: 10px; min-height: 100px"
                               class="form-control @error('note') is-invalid @enderror"></textarea>
                           @error('note')
@@ -87,10 +87,10 @@
                   <!--  -->
                   <ul class="nav nav-pills nav-fill">
                       <li class="nav-item col-6">
-                          <button type=submit class="nav-link active bg-success" aria-current="page" href="#">追加する</button>
+                          <button type=submit class="nav-link active bg-success" aria-current="page" href="#">Thêm chi tiêu</button>
                       </li>
                       <li class="nav-item col-6">
-                          <button class="nav-link bg-danger" style="color: white"  data-dismiss="modal">キャンセル</button>
+                          <button class="nav-link bg-danger" style="color: white"  data-dismiss="modal">Hủy</button>
                       </li>
                   </ul>
               </div>
@@ -109,13 +109,13 @@
                 <div class="mx-auto p-2">
                     <div class="row mb-2">
                         <div class="row" style="white-space: nowrap;">
-                            <div class="col-6">ウォレット: <span>{{ $wallet->name }}</span></div>
+                            <div class="col-6">Ví: <span>{{ $wallet->name }}</span></div>
                             <input type="hidden" name="wallet_id" value={{ $wallet->id }}>
-                            <div class="col-6 d-flex">支出: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;" value="{{$spending->amount}}"></div>
+                            <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;" value="{{$spending->amount}}"></div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-12">
-                                <label for="type">タイプ:</label>
+                                <label for="type">Loại:</label>
                                 <select id="type" name="type_id">
                                     @foreach ($SpendingTypes as $SpendingType)
                                         <option value="{{ $SpendingType->id }}" {{$spending->type_id == $SpendingType->id ? ' selected' : '' }}>{{ $SpendingType->name }}</option>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="row mb-3" style="padding-top: 10px; border-top: 1px solid gray; ">
                         <div class="">
-                            <label>ノート:</label>
+                            <label>Ghi chú:</label>
                             <textarea id="note" name="note" style="margin-top: 10px; min-height: 100px"
                                 class="form-control @error('note') is-invalid @enderror">{{ $spending->note }}</textarea>
                             @error('note')
@@ -136,10 +136,10 @@
                     <!--  -->
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item col-6">
-                            <button type=submit class="nav-link active bg-success" aria-current="page" href="#">修正</button>
+                            <button type=submit class="nav-link active bg-success" aria-current="page" href="#">Sửa chi tiêu</button>
                         </li>
                         <li class="nav-item col-6">
-                            <a class="nav-link bg-danger" style="color: white"  href="{{ route('daily-expense.delete', $spending->id) }}">消す</a>
+                            <a class="nav-link bg-danger" style="color: white"  href="{{ route('daily-expense.delete', $spending->id) }}">Hủy</a>
                         </li>
                     </ul>
                 </div>
