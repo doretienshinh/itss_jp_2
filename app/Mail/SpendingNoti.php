@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 
 class spendingNoti extends Mailable
 {
@@ -31,7 +32,9 @@ class spendingNoti extends Mailable
      */
     public function build()
     {
-        return $this->subject('Spending Notification of - '. $this->user->name)
+        $today = Carbon::now()->toDateTimeString();
+
+        return $this->subject('Thống kê thu chi ngày hôm nay ('.  $today . ') - '. $this->user->name)
                     ->view('mails.MailSpendingListDaily', [
                         "user" => $this->user,
                         "results" => $this->results

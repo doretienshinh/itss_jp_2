@@ -31,7 +31,7 @@ class MailSpendingRedmine extends Mailable
      */
     public function build()
     {
-        return $this->subject('Notification redmine extra spending - '. $this->user->name)
+        return $this->subject('Thông báo nhắc nhở  - '. $this->user->name)
                     ->view('mails.MailSpendingRedmine', [
                         "user" => $this->user
                     ]);
