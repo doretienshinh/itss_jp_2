@@ -13,5 +13,7 @@ $ php artisan db:seed
 $ php artisan storage:link
 $ npm install
 $ npm run build
+$ php artisan command:MailSpendingRedmine
+$ php artisan command:SpendingNoti
 $ php artisan serve
 ```
