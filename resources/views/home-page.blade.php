@@ -22,13 +22,13 @@
             background-color: #F4CCCC;
         }
         .pay {
-            left: 85%;
+            left: 75%;
             bottom: 50px;
             display:flex;
             justify-content: center;
             align-items: center;
         }
-        button.pay{
+        div.pay{
           position: absolute;
           z-index: 999;
         }
@@ -46,12 +46,17 @@
         Loại:  {{ $spending->spendingType->name }} <br>
     </div>
     @endforeach
-    <button type="button" class="btn btn-success pay" data-toggle="modal" data-target="#exampleModal">
-    Thêm </br> chi tiêu
-    </button>
+    <div class="pay">
+        <button type="button" class="btn btn-success me-2" data-toggle="modal" data-target="#receiveModal">
+            Thu nhập
+        </button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#payModal">
+            Chi tiêu
+        </button>
+    </div>
       
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="receiveModal" tabindex="-1" role="dialog" aria-labelledby="receiveModal" aria-hidden="true">
         <div class="modal-dialog" role="document" style="margin-top: 15%">
           <div class="modal-content p-3">
           <form action="{{ route('daily-expense.store') }}" method="post">
@@ -63,6 +68,55 @@
                           <div class="col-6">Ví: <span>{{ $wallet->name }}</span></div>
                           <input type="hidden" name="wallet_id" value={{ $wallet->id }}>
                           <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;"></div>
+                      </div>
+                      <div class="row mt-2">
+                          <div class="col-12">
+                              <label for="type">Loại:</label>
+                              <select id="type" name="type_id" style="border-radius: .2em;">
+                                @foreach ($SpendingTypes as $SpendingType)
+                                <option value="{{ $SpendingType->id }}">{{ $SpendingType->name }}</option>
+                                @endforeach
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mb-3" style="padding-top: 10px; border-top: 1px solid gray; ">
+                      <div class="">
+                          <label>Ghi chú:</label>
+                          <textarea id="note" name="note" style="margin-top: 10px; min-height: 100px"
+                              class="form-control @error('note') is-invalid @enderror"></textarea>
+                          @error('note')
+                          @enderror
+                      </div>
+                  </div>
+                  <!--  -->
+                  <ul class="nav nav-pills nav-fill">
+                      <li class="nav-item col-6">
+                          <button type=submit class="nav-link active bg-success" aria-current="page" href="#">Thêm thu nhập</button>
+                      </li>
+                      <li class="nav-item col-6">
+                          <button class="nav-link bg-danger" style="color: white"  data-dismiss="modal">Hủy</button>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModal" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="margin-top: 15%">
+          <div class="modal-content p-3">
+          <form action="{{ route('daily-expense.store') }}" method="post">
+            @csrf
+            <div>
+              <div class="mx-auto p-2">
+                  <div class="row mb-2">
+                      <div class="row" style="white-space: nowrap;">
+                          <div class="col-6">Ví: <span>{{ $wallet->name }}</span></div>
+                          <input type="hidden" name="wallet_id" value={{ $wallet->id }}>
+                          <div class="col-6 d-flex">Số tiền: -<input type="amount" name="amountFake" style="border: 0; border-bottom: 1px solid black;"></div>
+                          <input type="hidden" name="amount" value="">
                       </div>
                       <div class="row mt-2">
                           <div class="col-12">
@@ -171,7 +225,10 @@ $('.spending-item').click(function(){
     //         }
     //     })
     });
-// console.log(1);
+$('#payModal input[name=amountFake]').change(function(){
+    let amount = $('#payModal input[name=amountFake]').val();
+    $('#payModal input[name=amount]').val(-amount);
+})
 </script>
 
 @endsection

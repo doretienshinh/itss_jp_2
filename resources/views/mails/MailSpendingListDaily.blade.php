@@ -1,15 +1,15 @@
-<h2>Hello, {{ $user->name }}</h2>
+<h2>Xin chào, {{ $user->name }}</h2>
 <br>
-<p>Here are today's spendings.</p>
+<p>Đây là thống kê thu chi hôm nay của bạn.</p>
 @foreach ($results as $result)
-    <div>Wallet: {{ $result->name }}</div>
+    <div>Ví: {{ $result->name }}</div>
     <table>
         @if ($result->spendings->isNotEmpty())
             <tr>
-                <th>Amount</th>
-                <th>Type</th>
-                <th>Note</th>
-                <th>Time</th>
+                <th>Tiền</th>
+                <th>Kiểu</th>
+                <th>Ghi chú</th>
+                <th>Thời gian</th>
             </tr>
             @foreach ($result->spendings as $spending)
                 <tr>
@@ -20,10 +20,10 @@
                 </tr>
             @endforeach
         @else
-            <div>non spendings.</div>
+            <div>Không có thu chi nào cả.</div>
         @endif
     </table>
     <br>
     <br>
 @endforeach
-Thank you.
+Arigathanks.

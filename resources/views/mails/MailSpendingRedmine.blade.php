@@ -1,5 +1,5 @@
-<h2>Hey, {{ $user->name }}</h2> 
+<h2>Xin chào, {{ $user->name }}</h2> 
 <br>
-<p>Please enter today's spending in <a href="{{route('home-page');}}">Spendee</a></p>
+<p>Xin hãy điền thu chi hôm nay của bạn vào <a href="https://spendee.binhnguyen.tech/">Spendee</a></p>
     
-Thank you
+Arigathanks.
