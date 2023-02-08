@@ -43,6 +43,14 @@
 		#app > main {
 			flex: 1 1 auto;
 		}
+		.nav-item, .nav-link {
+			min-width: 33%;
+		}
+		@media only screen and (max-width: 800px) {
+			#content_body {
+				height: 50vh !important;
+			}
+		}
 	</style>
 </head>
 
@@ -51,7 +59,7 @@
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
 				<a class="navbar-brand" href="{{ url('/') }}">
-					<img src="/img/logo.png" alt="" height="40" >
+					SPENDEE
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -105,8 +113,8 @@
 
 		<main class="py-4">
 			<div class="d-flex justify-content-center align-items-center h-100">
-				<div class="col col-lg-6 mb-4 mb-lg-0 h-100">
-					<div class="card mb-3 h-100" style="border-radius: .5rem;">
+				<div class="w-100 h-100">
+					<div class="mb-3 h-100" style="border-radius: .5rem;">
 						<div class="row g-0 flex-grow-0 flex-shrink-1">
 
 							<div class="col-md-4 gradient-custom text-center" style="border-bottom: 1px solid lightgrey">
@@ -119,7 +127,7 @@
 
 							<div class="col-md-8" style="border-bottom: 1px solid lightgrey">
 								<div class="card-body p-4">
-									<table class="table table-borderless" style="width:50%">
+									<table class="table table-borderless" style="width:50%; margin: auto !important;">
 										<tr>
 											<td><strong>Ví</strong></td>
 											<td>{{ $walletUsing->name }}</td>
@@ -137,21 +145,21 @@
 							</div>
 						</div>
 
-						<div class="flex-grow-1 flex-shrink-1" style="height: 58vh; overflow-y: auto; overflow-x: hidden">
+						<div class="flex-grow-0 flex-shrink-1" style="height: 68vh; overflow-y: auto; overflow-x: hidden" id="content_body">
 						@yield('content')
 						</div>
 
-						<ul class="nav nav-pills nav-fill flex-grow-0 flex-shrink-1" style="border: solid 0.5px lightgrey; border-radius: 7px;">
+						<ul class="nav nav-pills " style="position: absolute; bottom: 0;border: solid 0.5px lightgrey; border-radius: 7px; min-width: 100%; display:flex; justify-content: space-between; background-color: white">
 							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}"
+								<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }} text-center"
 									aria-current="page" href="{{ route('home-page') }}">Thu chi</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }}"
+								<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }} text-center"
 									href="{{ route('monthly-income') }}">Báo cáo</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }}"
+								<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }} text-center"
 									href="{{ route('wallet-setting') }}">Thiết lập</a>
 							</li>
 						</ul>
