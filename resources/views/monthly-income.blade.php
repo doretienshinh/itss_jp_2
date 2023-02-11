@@ -26,9 +26,9 @@
         <div class="row mt-3 mb-3">
             <div class="col-3 pt-3">
                 Tháng {{ \Carbon\Carbon::now()->month }}<br>
-                Cần thiết: {{ $spendingOfMonthlyType1->sum('amount') }}đ<br>
-                Cá nhân: {{ $spendingOfMonthlyType2->sum('amount') }}đ<br>
-                Tiết kiệm: {{ $spendingOfMonthlyType3->sum('amount') }}đ<br>
+                Cần thiết: {{ number_format($spendingOfMonthlyType1->sum('amount')) }}đ<br>
+                Cá nhân: {{ number_format($spendingOfMonthlyType2->sum('amount')) }}đ<br>
+                Tiết kiệm: {{ number_format($spendingOfMonthlyType3->sum('amount')) }}đ<br>
             </div>
             <div class="col-9">
                 <div class="card">

@@ -39,7 +39,7 @@
     <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }} spending-item" data-id="{{$spending->id}}" data-toggle="modal" data-target="#exampleModal{{$spending->id}}" style="cursor: pointer">
         <div style="display: flex">
             <div style="margin-right: 200px"> Ngày:  {{ $spending->created_at }} </div> 
-            <div> Số tiền: {{ $spending->amount }}đ </div>
+            <div> Số tiền: {{ number_format($spending->amount) }}đ </div>
         </div>
         Ví:  {{$wallet->name}} <br>
         Ghi chú:  {{ $spending->note }} <br>
