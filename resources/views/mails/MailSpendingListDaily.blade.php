@@ -13,7 +13,7 @@
             </tr>
             @foreach ($result->spendings as $spending)
                 <tr>
-                    <td>{{ $spending->amount }}</td>
+                    <td>{{ number_format($spending->amount) }}đ</td>
                     <td>{{ $spending->spendingType->name }}</td>
                     <td>{{ $spending->note }}</td>
                     <td>{{ $spending->created_at }}</td>

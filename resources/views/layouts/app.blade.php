@@ -134,7 +134,7 @@
 										</tr>
 										<tr>
 											<td><strong>Tiền trong ví</strong></td>
-											<td>{{ $walletUsing->amount }}$</td>
+											<td>{{ number_format($walletUsing->amount) }}đ</td>
 										</tr>
 										{{-- <tr>
 											<td><strong>総支出</strong></td>
