@@ -14,6 +14,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     'name' => env('APP_NAME', 'Laravel'),
 

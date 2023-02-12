@@ -7,6 +7,7 @@ use App\Models\Wallet;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class SpendingService
 {
@@ -15,16 +16,18 @@ class SpendingService
     }
 
     public function store($request){
+        // dd($request->all());
+        try {
+            Spending::create($request->all());
+        } catch (\Exception $err){
+            dd($err);
+            return false;
+        }
         $amount = Wallet::where('id', $request->wallet_id)->first()->amount;
         
         Wallet::where('id', $request->wallet_id)->update([
             'amount' => $amount + $request->amount,
          ]);
-        try {
-            Spending::create($request->all());
-        } catch (\Exception $err){
-            return false;
-        }
         return true;
     }
 
@@ -38,7 +41,8 @@ class SpendingService
             Spending::where('id', $id)->update([
                 'amount' => $request->amount,
                 'note' => $request->note,
-                'type_id' => $request->type_id
+                'type_id' => $request->type_id,
+                'created_at' => $request->created_at
             ]);
         } catch (\Exception $err){
             return false;
@@ -64,13 +68,16 @@ class SpendingService
     }
 
     public function getMonthSpending($wallet_id){
-        $month = Carbon::now()->month();
-        $days = date("d");
+        $now = new DateTime();
+        $month = $now->format('m');
+        $days = $now->format('d');
+        // dd($month);
+        $amount = [];
+        $spending = [];
+
         for($i=0; $i < $days ; ++$i) {
             $amount[$i] = 0;
         }
-        $amount = [];
-        $spending = [];
         $sum = Wallet::where('owner', Auth::user()->id)->where('using', 'true')->firstOrFail()->amount;
         for($i=0; $i < $days ; ++$i) {
             $spending[$i] = Spending::where('wallet_id', $wallet_id)->whereMonth('created_at', $month)->whereDay('created_at', $i+1)->sum('amount');

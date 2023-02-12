@@ -40,7 +40,7 @@
         <div class="row mb-3" style="margin-left:0; margin-right:0;">
             <div class="card">
                 <div style="text-align:center">
-                    <span class="dot"></span> <span style="margin-right: 12px">Chi tiêu</span>
+                    <span class="dot"></span> <span style="margin-right: 12px">Thu chi</span>
                     <span class="dot1"></span> Toàn bộ
                 </div>
                 <canvas id="myChart1" class="chart1" style="width:100%;"></canvas>
@@ -50,11 +50,11 @@
     </div>
 
     <script>
-        var amountInDays = @json($amountInDays);
+        var amountInDays = @json($amountInDays).reverse();
         var spendingInDays = @json($spendingInDays);
-        spendingInDays = spendingInDays.map(s => s >= 0 ? 0 : -s);
-console.log(amountInDays);
-console.log(spendingInDays);
+        // spendingInDays = spendingInDays.map(s => s >= 0 ? 0 : -s);
+        console.log(amountInDays);
+        console.log(spendingInDays);
         var xValues = ["Cần thiết", "Cá nhân", "Tiết kiệm"];
         var yValues = [{{ $spendingOfMonthlyType1->sum('amount') }}, {{ $spendingOfMonthlyType2->sum('amount') }},
             {{ $spendingOfMonthlyType3->sum('amount') }}
@@ -80,7 +80,6 @@ console.log(spendingInDays);
         for(let i = 0; i < days ; i++){
             xValues1.push(i + 1);
         }
-        console.log(xValues1);
         new Chart("myChart1", {
             type: "line",
             data: {
@@ -102,11 +101,6 @@ console.log(spendingInDays);
                 legend: {
                     display: false
                 },
-                // scales: {
-                //     x: {
-                //         type: 'time'
-                //     }
-                // }
             }
         });
     </script>

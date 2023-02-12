@@ -23,6 +23,7 @@ class MonthlyIncomeController extends Controller
 
         $walletUsing = $this->WalletService->getUsingWallet();
         list($amountInDays, $spendingInDays) = $this->SpendingService->getMonthSpending($walletUsing->id);
+        // dd($this->SpendingService->getMonthSpending($walletUsing->id));
         // array_reverse($amountInDays);
         $spendingOfMonthlyType1 = $this->SpendingService->getMonthSpendingByType($walletUsing->id, 1);
         $spendingOfMonthlyType2 = $this->SpendingService->getMonthSpendingByType($walletUsing->id, 2);

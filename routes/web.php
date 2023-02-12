@@ -30,7 +30,7 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::get('/wallet-setting', [App\Http\Controllers\WalletSettingController::class, 'index'])->name('wallet-setting');
     Route::post('/wallet-setting', [App\Http\Controllers\WalletSettingController::class, 'store'])->name('wallet.store');
     Route::post('/wallet-active', [App\Http\Controllers\WalletSettingController::class, 'activeWallet'])->name('wallet.active');
-    Route::get('/add-wallet', [App\Http\Controllers\AddWalletController::class, 'index'])->name('add-wallet');
+    // Route::get('/add-wallet', [App\Http\Controllers\AddWalletController::class, 'index'])->name('add-wallet');
     // Để nhìn popup wallet report
     // Route::get('/wallet-popup', function () {
     //     return view('wallet');

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('type_id')->references('id')->on('spending_types')->onDelete('cascade');
             $table->unsignedBigInteger('wallet_id');
             $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
+            // $table->date('date')->nullable();
             $table->string('note');
             $table->timestamps();
         });

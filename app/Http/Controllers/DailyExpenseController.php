@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\SpendingService;
+use DateTime;
 
 class DailyExpenseController extends Controller
 {
@@ -15,6 +16,14 @@ class DailyExpenseController extends Controller
 
     public function store(Request $request)
     {
+        if(!$request->note) {
+            $now = new DateTime();
+            $now = $now->format('Y-m-d');
+            $request->merge([
+                'note' => "Ghi chú vào - " . $now
+            ]);
+        }
+        
         $result = $this->SpendingService->store($request);
         
         return redirect()->back();
