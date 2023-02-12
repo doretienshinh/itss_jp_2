@@ -13,7 +13,8 @@ class Spending extends Model
         'wallet_id',
         'amount',
         'type_id', 
-        'note'
+        'note',
+        'created_at'
     ];
 
     public function wallet()

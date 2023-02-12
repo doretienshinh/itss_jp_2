@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    
 
 <head>
     <style>
@@ -38,7 +37,7 @@
     @foreach ($spendings as $spending)
     <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }} spending-item" data-id="{{$spending->id}}" data-toggle="modal" data-target="#exampleModal{{$spending->id}}" style="cursor: pointer">
         <div style="display: flex">
-            <div style="margin-right: 200px"> Ngày:  {{ $spending->created_at }} </div> 
+            <div style="margin-right: 200px"> Ngày:  {{ $spending->created_at->format('Y-m-d') }} </div> 
             <div> Số tiền: {{ number_format($spending->amount) }}đ </div>
         </div>
         Ví:  {{$wallet->name}} <br>
@@ -74,21 +73,25 @@
                           <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;"></div>
                       </div>
                       <div class="row mt-2">
-                          <div class="col-12">
-                              <label for="type">Loại:</label>
-                              <select id="type" name="type_id" style="border-radius: .2em;">
-                                @foreach ($SpendingTypes as $SpendingType)
-                                <option value="{{ $SpendingType->id }}">{{ $SpendingType->name }}</option>
-                                @endforeach
-                              </select>
-                          </div>
+                        <div class="col-6">
+                            <label for="type">Loại:</label>
+                            <select id="type" name="type_id" style="border-radius: .2em;">
+                              @foreach ($SpendingTypes as $SpendingType)
+                              <option value="{{ $SpendingType->id }}">{{ $SpendingType->name }}</option>
+                              @endforeach
+                            </select>
+                        </div>
+                        <div class="col-6">
+                          <label for="type">Thời gian:</label>
+                          <input type="date" name="created_at" max="{{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}">
+                        </div>
                       </div>
                   </div>
                   <div class="row mb-3" style="padding-top: 10px; border-top: 1px solid gray; ">
                       <div class="">
                           <label>Ghi chú:</label>
                           <textarea id="note" name="note" style="margin-top: 10px; min-height: 100px"
-                              class="form-control @error('note') is-invalid @enderror"></textarea>
+                              class="form-control @error('note') is-invalid @enderror" placeholder="Ghi chú vào - {{ date('Y-m-d') }}"></textarea>
                           @error('note')
                           @enderror
                       </div>
@@ -123,7 +126,7 @@
                           <input type="hidden" name="amount" value="">
                       </div>
                       <div class="row mt-2">
-                          <div class="col-12">
+                          <div class="col-6">
                               <label for="type">Loại:</label>
                               <select id="type" name="type_id" style="border-radius: .2em;">
                                 @foreach ($SpendingTypes as $SpendingType)
@@ -131,13 +134,17 @@
                                 @endforeach
                               </select>
                           </div>
+                          <div class="col-6">
+                            <label for="type">Thời gian:</label>
+                            <input type="date" name="created_at" max="{{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}>
+                        </div>
                       </div>
                   </div>
                   <div class="row mb-3" style="padding-top: 10px; border-top: 1px solid gray; ">
                       <div class="">
                           <label>Ghi chú:</label>
                           <textarea id="note" name="note" style="margin-top: 10px; min-height: 100px"
-                              class="form-control @error('note') is-invalid @enderror"></textarea>
+                              class="form-control @error('note') is-invalid @enderror" placeholder="Ghi chú vào - {{ date('Y-m-d') }}"></textarea>
                           @error('note')
                           @enderror
                       </div>
@@ -172,13 +179,17 @@
                             <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;" value="{{$spending->amount}}"></div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <label for="type">Loại:</label>
                                 <select id="type" name="type_id">
                                     @foreach ($SpendingTypes as $SpendingType)
                                         <option value="{{ $SpendingType->id }}" {{$spending->type_id == $SpendingType->id ? ' selected' : '' }}>{{ $SpendingType->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="type">Thời gian:</label>
+                                <input type="date" value="{{ $spending->created_at->format('Y-m-d') }}" name="created_at" max="{{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}>
                             </div>
                         </div>
                     </div>
@@ -194,10 +205,10 @@
                     <!--  -->
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item col-6">
-                            <button type=submit class="nav-link active bg-success" aria-current="page" href="#">Sửa chi tiêu</button>
+                            <button type=submit class="nav-link active bg-success" aria-current="page" href="#">Cập nhật</button>
                         </li>
                         <li class="nav-item col-6">
-                            <a class="nav-link bg-danger" style="color: white"  href="{{ route('daily-expense.delete', $spending->id) }}">Hủy</a>
+                            <a class="nav-link bg-danger" style="color: white"  href="{{ route('daily-expense.delete', $spending->id) }}">Xóa</a>
                         </li>
                     </ul>
                 </div>
