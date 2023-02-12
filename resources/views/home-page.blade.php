@@ -136,7 +136,7 @@
                           </div>
                           <div class="col-6">
                             <label for="type">Thời gian:</label>
-                            <input type="date" name="created_at" max="{{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}>
+                            <input type="date" name="created_at" max="{{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}">
                         </div>
                       </div>
                   </div>
