@@ -43,19 +43,19 @@
 		#app > main {
 			flex: 1 1 auto;
 		}
-		.nav-item, .nav-link {
+
+		.nav-app {
 			min-width: 33%;
 			border: 1pt solid grey;
 			color: grey !important;
 		}
 
-		.nav-link {
-			padding-left: 10pt !important;
-			padding: 10pt 10pt;
+		.nav-app {
+			padding: 5pt 5pt;
 		}
 
-		.nav-link.active,
-		.nav-link:hover{
+		.nav-app.active,
+		.nav-app:hover{
 			border: 1pt solid black;
 			background-color: #F5F5F5 !important; 
 			color: black !important;
@@ -79,28 +79,36 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
+				<a class="navbar-brand mx-auto" href="{{ url('/') }}">
+					SPENDEE
+				</a>
+
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto">
 					<!-- Left Side Of Navbar -->
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item">
-							<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}"
+					</ul>
+
+					<!-- Right Side Of Navbar -->
+					<ul class="navbar-nav me-auto me-md-5">
+						<li class="nav-item nav-app {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}">
+							<a class="nav-link"
 							aria-current="page" href="{{ route('home-page') }}">
 								Thu chi
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }}"
+						<li class="nav-item nav-app {{ (request()->is('monthly-income') ) ? 'active' : '' }}">
+							<a class="nav-link"
 							href="{{ route('monthly-income') }}">
 								Báo cáo
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }} "
+						<li class="nav-item nav-app {{ (request()->is('wallet-setting') ) ? 'active' : '' }}">
+							<a class="nav-link"
 							href="{{ route('wallet-setting') }}">
 								Thiết lập
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item nav-app">
 							<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 													document.getElementById('logout-form').submit();">
 								{{ __('Đăng xuất') }}
@@ -111,15 +119,7 @@
 							</form>
 						</li>
 					</ul>
-
-					<!-- Right Side Of Navbar -->
-					<ul class="navbar-nav ms-auto">
-					</ul>
 				</div>
-
-				<a class="navbar-brand" href="{{ url('/') }}">
-					SPENDEE
-				</a>
 			</div>
 		</nav>
 
