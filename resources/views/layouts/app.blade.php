@@ -45,7 +45,23 @@
 		}
 		.nav-item, .nav-link {
 			min-width: 33%;
+			border: 1pt solid grey;
+			color: grey !important;
 		}
+
+		.nav-link {
+			padding-left: 10pt !important;
+			padding: 10pt 10pt;
+		}
+
+		.nav-link.active,
+		.nav-link:hover{
+			border: 1pt solid black;
+			background-color: #F5F5F5 !important; 
+			color: black !important;
+			font-weight: bold !important;
+		}
+
 		@media only screen and (max-width: 800px) {
 			#content_body {
 				height: 50vh !important;
@@ -58,9 +74,6 @@
 	<div id="app">
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
-				<a class="navbar-brand" href="{{ url('/') }}">
-					SPENDEE
-				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 					<span class="navbar-toggler-icon"></span>
@@ -69,45 +82,44 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<!-- Left Side Of Navbar -->
 					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }}"
+							aria-current="page" href="{{ route('home-page') }}">
+								Thu chi
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }}"
+							href="{{ route('monthly-income') }}">
+								Báo cáo
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }} "
+							href="{{ route('wallet-setting') }}">
+								Thiết lập
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">
+								{{ __('Đăng xuất') }}
+							</a>
 
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+								@csrf
+							</form>
+						</li>
 					</ul>
 
 					<!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ms-auto">
-						<!-- Authentication Links -->
-						@guest
-						@if (Route::has('login'))
-						<li class="nav-item">
-							<a class="nav-link" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
-						</li>
-						@endif
-
-						@if (Route::has('register'))
-						<li class="nav-item">
-							<a class="nav-link" href="{{ route('register') }}">{{ __('Đăng ký') }}</a>
-						</li>
-						@endif
-						@else
-						<li class="nav-item dropdown">
-							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false" v-pre>
-								{{ Auth::user()->name }}
-							</a>
-
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-									{{ __('Đăng xuất') }}
-								</a>
-
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-									@csrf
-								</form>
-							</div>
-						</li>
-						@endguest
 					</ul>
 				</div>
+
+				<a class="navbar-brand" href="{{ url('/') }}">
+					SPENDEE
+				</a>
 			</div>
 		</nav>
 
@@ -148,21 +160,6 @@
 						<div class="flex-grow-0 flex-shrink-1" style="height: 68vh; overflow-y: auto; overflow-x: hidden" id="content_body">
 						@yield('content')
 						</div>
-
-						<ul class="nav nav-pills " style="position: absolute; bottom: 0;border: solid 0.5px lightgrey; border-radius: 7px; min-width: 100%; display:flex; justify-content: space-between; background-color: white">
-							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('/home') || request()->is('/') || request()->is('home-page') ) ? 'active' : '' }} text-center"
-									aria-current="page" href="{{ route('home-page') }}">Thu chi</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('monthly-income') ) ? 'active' : '' }} text-center"
-									href="{{ route('monthly-income') }}">Báo cáo</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link {{ (request()->is('wallet-setting') ) ? 'active' : '' }} text-center"
-									href="{{ route('wallet-setting') }}">Thiết lập</a>
-							</li>
-						</ul>
 					</div>
 				</div>
 			</div>
