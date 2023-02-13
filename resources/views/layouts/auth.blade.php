@@ -20,7 +20,10 @@
         <div id="app">
             <main class="py-0">
                 <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center"> 
-                        @yield('content')
+                    <h1>
+                        SPENDEE
+                    </h1>
+                    @yield('content')
                 </div>    
             </main>
         </div>
