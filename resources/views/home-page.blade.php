@@ -21,15 +21,8 @@
             background-color: #F4CCCC;
         }
         .pay {
-            left: 80%;
-            bottom: 50px;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-        }
-        div.pay{
-          position: absolute;
-          z-index: 999;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
@@ -45,18 +38,24 @@
         Loại:  {{ $spending->spendingType->name }} <br>
     </div>
     @endforeach
-    <div class="pay">
-        <button type="button" class="btn btn-success me-2" data-toggle="modal" data-target="#receiveModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-              </svg>
-        </button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#payModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-              </svg>
-        </button>
+<div class="container pay">
+    <div class="row">
+        <div class="col-1 offset-8 offset-md-10">
+            <button type="button" class="btn btn-lg btn-success me-2" data-toggle="modal" data-target="#receiveModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+            </button>
+        </div>
+        <div class="col-1 offset-1 offset-md-0">
+            <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#payModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                    </svg>
+            </button>
+        </div>
     </div>
+</div>
       
       <!-- Modal -->
       <div class="modal fade" id="receiveModal" tabindex="-1" role="dialog" aria-labelledby="receiveModal" aria-hidden="true">
