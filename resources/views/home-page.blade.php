@@ -15,10 +15,10 @@
         }
 
         .plus {
-            background-color: #51d140;
+            background-color: #83cd8278;
         }
         .minus {
-            background-color: #F4CCCC;
+            background-color: #F4D1D1;
         }
         .pay {
             position: fixed;
