@@ -52,7 +52,7 @@
 				</div>
 
 				<div class="row mb-3">
-					<div class="col-md-5 offset-md-2 text-success text-end h5">
+					<div class="col-md-3 offset-md-3 text-success h5">
 						{{ __('Chưa có tài khoản？') }}
 					</div>
 					<div class="col-md-3 h5">

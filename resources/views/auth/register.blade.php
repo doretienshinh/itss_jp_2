@@ -60,12 +60,12 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-5 offset-md-3 text-success text-end h5">
+                    <div class="col-md-3 offset-md-3 text-success h5">
                         {{ __('Đã có tài khoản？') }}
                     </div>
                     <div class="col-md-2 h5">
                             @if (Route::has('login'))
-                                <a class="nav-link text-start text-primary" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
+                                <a class="nav-link text-primary" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
                             @endif
                     </div>
                 </div> 
