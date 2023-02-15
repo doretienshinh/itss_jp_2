@@ -63,6 +63,12 @@
     <div class="modal fade" id="receiveModal" tabindex="-1" role="dialog" aria-labelledby="receiveModal" aria-hidden="true">
         <div class="modal-dialog" role="document" style="margin-top: 15%">
             <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Form thêm thu nhập</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <form action="{{ route('daily-expense.store') }}" method="post">
                     @csrf
                     <div>
@@ -116,6 +122,12 @@
     <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModal" aria-hidden="true">
         <div class="modal-dialog" role="document" style="margin-top: 15%">
             <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Form thêm chi tiêu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <form action="{{ route('daily-expense.store') }}" method="post">
                     @csrf
                     <div>
@@ -171,6 +183,12 @@
     <div class="modal fade modal{{ $spending->id }}" id="exampleModal{{ $spending->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe{{ $spending->id }}" aria-hidden="true">
         <div class="modal-dialog" role="document" style="margin-top: 15%">
             <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Form cập nhật thu chi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <form action="{{ route('daily-expense.update', $spending->id) }}" method="post">
                     @csrf
                     <div>
