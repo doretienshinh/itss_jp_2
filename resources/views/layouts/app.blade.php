@@ -136,7 +136,7 @@
 
 							<div class="col-md-8" style="border-bottom: 1px solid lightgrey">
 								<div class="card-body p-4">
-									<table class="table table-borderless" style="width:50%; margin: auto !important;">
+									<table class="table table-borderless" style="width:75%; margin: auto !important;">
 										<tr>
 											<td><strong>Ví</strong></td>
 											<td>{{ $walletUsing->name }}</td>

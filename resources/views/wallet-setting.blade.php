@@ -4,7 +4,7 @@
     <form action="{{ route('wallet.active') }}" method="post">
         <div class="row justify-content-center">
             @csrf
-            <table class="table table-borderless" style="width: 60%; margin-top: 30px">
+            <table class="table table-borderless" style="width: 80%; margin-top: 30px">
                 <tr>
                     <td style="text-align: center">Chia ví</td>
                     <td style="padding-left: 5px"></td>

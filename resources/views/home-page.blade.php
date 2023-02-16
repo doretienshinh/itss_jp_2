@@ -32,8 +32,8 @@
     @foreach ($spendings as $spending)
     <div class="{{ $spending->amount > 0 ? 'plus' : 'minus' }} spending-item" data-id="{{$spending->id}}" data-toggle="modal" data-target="#exampleModal{{$spending->id}}" style="cursor: pointer">
         <div style="display: flex">
-            <div style="margin-right: 200px"> Ngày: {{ $spending->created_at->format('Y-m-d') }} </div>
-            <div> Số tiền: {{ number_format($spending->amount) }}đ </div>
+            <div style="flex: 1 1 auto;"> Ngày: {{ $spending->created_at->format('Y-m-d') }} </div>
+            <div style="width: 45%; float: right; text-align: right;"> Số tiền: {{ number_format($spending->amount) }}đ </div>
         </div>
         Ví: {{$wallet->name}} <br>
         Ghi chú: {{ $spending->note }} <br>
@@ -79,7 +79,7 @@
                                     <input type="hidden" name="wallet_id" value={{ $wallet->id }}>
                                 </div>
                                 <div class="row" style="white-space: nowrap;">
-                                    <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;" /></div>
+                                    <div class="col-6 d-flex">Số tiền: <input type="amount" name="amount" style="border: 0; border-bottom: 1px solid black;" autocomplete="off"/></div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-5">
@@ -138,7 +138,7 @@
                                     <input type="hidden" name="wallet_id" value={{ $wallet->id }}>
                                 </div>
                                 <div class="row" style="white-space: nowrap;">
-                                    <div class="col-6 d-flex">Số tiền: -<input type="amount" name="amountFake" style="border: 0; border-bottom: 1px solid black;"></div>
+                                    <div class="col-6 d-flex">Số tiền: -<input type="amount" name="amountFake" style="border: 0; border-bottom: 1px solid black;" autocomplete="off"></div>
                                     <input type="hidden" name="amount" value="">
                                 </div>
                                 <div class="row mt-2">
