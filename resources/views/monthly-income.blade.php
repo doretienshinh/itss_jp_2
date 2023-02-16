@@ -23,16 +23,22 @@
     </head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <div class="container">
-        <div class="row mt-3 mb-3">
-            <div class="col-3 pt-3">
-                Tháng {{ \Carbon\Carbon::now()->month }}<br>
-                Cần thiết: {{ number_format($spendingOfMonthlyType1->sum('amount')) }}đ<br>
-                Cá nhân: {{ number_format($spendingOfMonthlyType2->sum('amount')) }}đ<br>
-                Tiết kiệm: {{ number_format($spendingOfMonthlyType3->sum('amount')) }}đ<br>
-            </div>
-            <div class="col-9">
+        <div class="mt-3 mb-3">
+            <div>
                 <div class="card">
                     <canvas id="myChart" class="chart "></canvas>
+                </div>
+            </div>
+            <div class="pt-3" style="margin: auto; width: 70%;">
+                Tháng {{ \Carbon\Carbon::now()->month }}<br>
+                <div class="row">
+                    <div class="col">Cần thiết:</div><div class="col">{{ number_format($spendingOfMonthlyType1->sum('amount')) }}đ</div>
+                </div>
+                <div class="row">
+                    <div class="col">Cá nhân:</div><div class="col">{{ number_format($spendingOfMonthlyType2->sum('amount')) }}đ</div>
+                </div>
+                <div class="row">
+                    <div class="col">Tiết kiệm:</div><div class="col">{{ number_format($spendingOfMonthlyType3->sum('amount')) }}đ</div>
                 </div>
             </div>
         </div>
